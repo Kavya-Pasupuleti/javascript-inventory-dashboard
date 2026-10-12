@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Assignment 5</h3>
+    <script>
+        let length;
+        let width;
+        function area(length = 5,width = 4){
+            return length*width;
+        }
+        let result  = area();
+        document.write(
+            "Standard Function Area (Default 5x4): "
+        );
+        document.write(result + "<br>");
+
+        let length1;
+        let width1;
+
+        let result1 = (length1 = 10,width1 = 3) => {
+            return length1*width1; 
+        }
+        document.write("Arrow Function Area (Custom 10x3): ");
+        document.write(result1(1) + "<br><br>");
+        
+        function showMessage() {
+         var message = "Inside the function <br>";
+          document.write("--Function scope-- <br>"+message + "<br>");
+        }
+
+         showMessage();
+
+         if (true) {
+            let city = "Vizianagaram";
+            document.write("--Block Scope-- <br>"+city);
+        }
+
+    </script>
+</body>
+</html>

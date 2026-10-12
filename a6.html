@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   let object1 ={
+    name: "Laptop",
+    price: 800
+   }
+    let object2 ={
+    name: "Mouse",
+    price: 25
+   }
+    let object3 ={
+    name: "Keyboard",
+    price: 45
+   }
+   let products = [object1,object2,object3];
+   document.write("<pre>"+JSON.stringify(products) + "</pre>");
+
+   document.write("<br>-- All Products (forEach) -- <br>");
+   products.forEach(display);
+
+   function display(element){
+   document.write("Item: "+ element.name +" Price: $" + element.price + "<br>");
+   }
+   
+   document.write("<br>-- Filtered Products (Price < $50) --<br>");
+   let result = products.filter(product => product.price<50);
+   document.write("<pre>" + JSON.stringify(result, null, 2) + "</pre>");
+
+   document.write("-- Mapped Product Tags (map) -- <br>");
+   let map = products.map(last => last.name.toUpperCase() + " costs $" + last.price);
+   document.write(map.join("<br>"));
+
+
+</script>
+</body>
+</html>

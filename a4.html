@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        Assignment 4
+    </h3>
+    <script>
+        let a = 5;
+        document.write(" --Multiplication Table of 5-- <br> ");
+        
+        for(let i = 1;i<=a;i++){
+         document.write(a+"x"+i+"="+a*i+"<br>");   
+         
+        }
+        let result = 11;
+        document.write("<br>-- First number > 10 and divisible by 6 --<br>");
+        while(true){
+            if(result%6==0){
+                document.write("Found: "+ result + "<br><br>");
+                break; 
+            }
+            result++;
+        }
+        
+        document.write("--skips numbers using continue-- <br>");
+        let b = 1;
+        do{
+            if(b==3){
+                b++;
+                continue;
+            }
+            document.write(b + "<br>");
+            b++;   
+        }while(b <= 5);
+    </script>
+    
+</body>
+</html>

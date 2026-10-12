@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Assignment 2</h3>
+    <script>
+        alert("pay the bill");
+        let subtotal = Number(prompt("Subtotal: $"));
+        let tip = Number(prompt("Tip Percentage: "));
+        let calculatedTip = (subtotal*tip)/100;
+        let totalAmount = subtotal+calculatedTip;
+        document.write("Subtotal: $"+ subtotal +"<br>");
+        document.write("Tip Percentage: " + tip + "%"+ "<br>");
+        document.write("Calculated Tip: $"+ calculatedTip + "<br>");
+        document.write("Total Amount to Pay: $"+ totalAmount + "<br>");
+
+        
+    </script>
+</body>
+</html>
