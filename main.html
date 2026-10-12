@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Product Inventory & Analytics Dashboard</title>
+</head>
+<body>
+
+    <h1>Interactive Product Inventory & Analytics Dashboard</h1>
+    <p>Open the browser console (F12) to view the inventory reports.</p>
+
+    <script>
+        console.log("--- Initializing Inventory System ---");
+
+        // 1. Create initial product objects
+        let obj1 = {
+            name: "Laptop",
+            price: 50000,
+            category: "Premium"
+        };
+
+        let obj2 = {
+            name: "PC",
+            price: 8000,
+            category: "Mid-range"
+        };
+
+        // Store products in an array
+        let inventory = [obj1, obj2];
+
+        // 2. Get new product details
+        let productName = prompt("Enter the product name:");
+        let priceInput = prompt("Enter the estimated price:");
+
+        // Validate input and add the product
+        while (true) {
+
+            // Handle Cancel
+            if (productName === null || priceInput === null) {
+                console.log("Product entry cancelled.");
+                break;
+            }
+
+            let productPrice = Number(priceInput);
+
+            // Check for invalid input
+            if (
+                productName.trim() === "" ||
+                priceInput.trim() === "" ||
+                Number.isNaN(productPrice) ||
+                productPrice <= 0
+            ) {
+                alert("Invalid input! Enter a name and a positive price.");
+
+                productName = prompt("Enter the product name:");
+                priceInput = prompt("Enter the estimated price:");
+
+                continue;
+            } else {
+
+                // Create the new product
+                let obj3 = {
+                    name: productName.trim(),
+                    price: productPrice
+                };
+
+                // 3. Assign category using switch
+                switch (true) {
+                    case obj3.price < 5000:
+                        obj3.category = "Budget";
+                        break;
+
+                    case obj3.price <= 15000:
+                        obj3.category = "Mid-range";
+                        break;
+
+                    default:
+                        obj3.category = "Premium";
+                }
+
+                // Add the product to inventory
+                inventory.push(obj3);
+                break;
+            }
+        }
+
+        // 4. Display inventory using forEach()
+        console.log("--- Processing Inventory Roster (forEach) ---");
+
+        inventory.forEach((product) => {
+            console.log(
+                "Item: " + product.name +
+                " ($" + product.price + ")" +
+                " -> Category: " + product.category
+            );
+        });
+
+        // 5. Calculate total inventory value
+        function calculateTotal(inventory) {
+            let total = 0;
+
+            for (let i = 0; i < inventory.length; i++) {
+                total += inventory[i].price;
+            }
+
+            return total;
+        }
+
+        console.log("--- Financial Analytics ---");
+        console.log("Total Inventory Value: $" + calculateTotal(inventory));
+
+        // 6. Calculate price including tax
+        const calculateWithTax = (price, taxRate) => {
+            let tax = price * (taxRate / 100);
+            return price + tax;
+        };
+
+        console.log(
+            "Price including 10% tax on $8000: $" +
+            calculateWithTax(8000, 10)
+        );
+
+        // 7. Apply discount
+        const applyDiscount = (price, discountRate) => {
+            let discount = price * (discountRate / 100);
+            let discountedPrice = price - discount;
+
+            return discountedPrice;
+        };
+
+        console.log(
+            "Price after 15% discount on $8000: $" +
+            applyDiscount(8000, 15)
+        );
+
+        // 8. Filter products priced below $10000
+        let affordableProducts = inventory.filter((product) => {
+            return product.price < 10000;
+        });
+
+        console.log("Affordable Products:", affordableProducts);
+
+        // 9. Format affordable products using map()
+        let affordableReport = affordableProducts.map((product) => {
+            return product.name.toUpperCase() + ": $" + product.price;
+        });
+
+        console.log("Affordable Report:", affordableReport);
+
+        // 10. Create a formatted report for all products
+        let formattedInventory = inventory.map((product) => {
+            return product.name.toUpperCase() + ": $" + product.price;
+        });
+
+        console.log("Formatted Report List:", formattedInventory);
+
+        // 11. Search for a product using a loop
+        console.log("--- Product Search ---");
+
+        let searchName = prompt("Enter a product name to search:");
+
+        if (searchName === null || searchName.trim() === "") {
+            console.log("Search cancelled or empty.");
+        } else {
+            let found = false;
+
+            for (let i = 0; i < inventory.length; i++) {
+
+                // Skip products that do not match
+                if (
+                    inventory[i].name.toLowerCase() !==
+                    searchName.trim().toLowerCase()
+                ) {
+                    continue;
+                }
+
+                // Display the matching product
+                console.log("Product found:", inventory[i]);
+                found = true;
+                break;
+            }
+
+            if (!found) {
+                console.log("Product not found: " + searchName);
+            }
+        }
+
+        console.log("--- Inventory System Completed ---");
+    </script>
+
+</body>
+</html>
